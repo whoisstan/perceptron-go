@@ -73,7 +73,7 @@ func PlotEpoch(folder string, epoch int, weights []float64, bias float64, inputs
 	p.Add(scatterRed, scatterBlue, line)
 
 	// Save the plot to the "plots" folder
-	filePath := filepath.Join(folder, fmt.Sprintf("epoch_%d.png", epoch+1))
+	filePath := filepath.Join(folder, fmt.Sprintf("epoch_%03d.png", epoch+1))
 	if err := p.Save(4*vg.Inch, 4*vg.Inch, filePath); err != nil {
 		panic(err)
 	}
