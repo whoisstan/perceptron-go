@@ -70,16 +70,16 @@ func (m *Model) Train(inputs [][]float64, labels []int, maxEpochs int, learningR
 				m.Bias += learningRate * float64(difference)
 			}
 		}
-		// Create a deep copy of m.Weights
-		weightsCopy := make([]float64, len(m.Weights))
-		copy(weightsCopy, m.Weights)
-
-		epochsData = append(epochsData, Model{Weights: weightsCopy, Bias: m.Bias})
 
 		// Stop early if no misclassified points
 		if !misclassified {
 			fmt.Printf("Training stopped early at epoch %d\n", epoch+1)
 			break
+		} else {
+			// Create a deep copy of m.Weights
+			weightsCopy := make([]float64, len(m.Weights))
+			copy(weightsCopy, m.Weights)
+			epochsData = append(epochsData, Model{Weights: weightsCopy, Bias: m.Bias})
 		}
 	}
 	return epochsData
